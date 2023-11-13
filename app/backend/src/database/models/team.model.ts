@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import db from '.'
+import db from '.';
 
 export default class Team extends Model {
   declare id: number;
