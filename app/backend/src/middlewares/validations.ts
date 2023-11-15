@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import validator from 'validator';
+import JWT from '../utils/JWT';
 
 export default class Validations {
   static validateLogin(req: Request, res: Response, next: NextFunction) {
@@ -28,5 +29,19 @@ export default class Validations {
     }
 
     next();
+  }
+
+  static validateToken(req: Request, res: Response, next: NextFunction) {
+    const token = req.headers.authorization;
+
+    if (!token) return res.status(401).json({ message: 'Token not found' });
+
+    try {
+      const verifyToken = token.replace('Bearer ', '');
+      JWT.verify(verifyToken);
+      next();
+    } catch (error) {
+      return res.status(401).json({ message: 'Token must be a valid token' });
+    }
   }
 }

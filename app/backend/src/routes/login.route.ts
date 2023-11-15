@@ -12,4 +12,6 @@ router.post(
   LoginController.login,
 );
 
+router.get('/login/role', Validations.validateToken, LoginController.role);
+
 export default router;

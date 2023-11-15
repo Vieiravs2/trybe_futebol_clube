@@ -1,4 +1,4 @@
-import { JwtPayload, Secret, SignOptions, sign } from 'jsonwebtoken';
+import { JwtPayload, Secret, SignOptions, sign, verify } from 'jsonwebtoken';
 
 export default class JWT {
   private static secret: Secret = process.env.JWT_SECRET || 'jwt_secret';
@@ -10,5 +10,10 @@ export default class JWT {
   static sign(payload: JwtPayload): string {
     const token = sign(payload, this.secret, this.jwtConfig);
     return token;
+  }
+
+  static verify(token: string) {
+    const decoded = verify(token, this.secret);
+    return decoded;
   }
 }

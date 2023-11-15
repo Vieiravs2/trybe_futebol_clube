@@ -14,4 +14,10 @@ export default class LoginService {
     console.log(token);
     return { status: 200, data: { token } };
   }
+
+  static async role(email: string) {
+    const validateEmail = await loginModel.findOne({ where: { email } }) as loginModel;
+    const { role } = validateEmail;
+    return { status: 200, data: { role } };
+  }
 }
