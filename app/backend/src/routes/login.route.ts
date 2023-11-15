@@ -4,6 +4,12 @@ import Validations from '../middlewares/validations';
 
 const router = Router();
 
-router.post('/login', Validations.validateEmailAndPassword, LoginController.login);
+router.post(
+  '/login',
+  Validations.validateLogin,
+  Validations.validateEmail,
+  Validations.validatePassword,
+  LoginController.login,
+);
 
 export default router;
