@@ -9,8 +9,6 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-console.log('Passou aqui', __dirname);
-
 describe('Testando a rota /teams', function () { 
   beforeEach(function () { sinon.restore(); });
 
