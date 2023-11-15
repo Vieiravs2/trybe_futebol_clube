@@ -11,6 +11,7 @@ export default class LoginService {
     }
 
     const token = JWT.sign({ email });
-    return { status: 201, data: { token } };
+    console.log(token);
+    return { status: 200, data: { token } };
   }
 }
