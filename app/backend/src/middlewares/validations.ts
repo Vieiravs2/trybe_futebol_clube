@@ -39,9 +39,10 @@ export default class Validations {
     try {
       const verifyToken = token.replace('Bearer ', '');
       JWT.verify(verifyToken);
-      next();
     } catch (error) {
       return res.status(401).json({ message: 'Token must be a valid token' });
     }
+
+    next();
   }
 }
