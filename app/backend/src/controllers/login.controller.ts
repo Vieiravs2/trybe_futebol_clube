@@ -8,9 +8,9 @@ export default class LoginController {
     return res.status(status).json(data);
   }
 
-  // static async role(req: Request, res: Response) {
-  //   const { email } = req.body;
-  //   const { status, data } = await loginService.role(email);
-  //   return res.status(status).json(data);
-  // }
+  static async role(req: Request, res: Response) {
+    const { email } = req.body.user;
+    const { status, data } = await loginService.role(email);
+    return res.status(status).json(data);
+  }
 }

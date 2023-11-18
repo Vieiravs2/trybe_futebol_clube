@@ -37,8 +37,9 @@ export default class Validations {
     if (!token) return res.status(401).json({ message: 'Token not found' });
 
     try {
-      const verifyToken = token.replace('Bearer ', '');
-      JWT.verify(verifyToken);
+      const tokenReplace = token.replace('Bearer ', '');
+      const decoded = JWT.verifyToken(tokenReplace);
+      req.body.user = decoded;
     } catch (error) {
       return res.status(401).json({ message: 'Token must be a valid token' });
     }

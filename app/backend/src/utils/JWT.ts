@@ -12,7 +12,7 @@ export default class JWT {
     return token;
   }
 
-  static verify(token: string) {
+  static verifyToken(token: string) {
     const decoded = verify(token, this.secret);
     return decoded;
   }
