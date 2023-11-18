@@ -9,6 +9,6 @@ export default class MatchesService {
         { model: teamsModel, as: 'awayTeam', attributes: { exclude: ['id'] } },
       ],
     });
-    return allMatches;
+    return { status: 200, data: allMatches };
   }
 }
