@@ -37,6 +37,13 @@ export default class MatchesService {
   }
 
   static async createMatch(homeId: string, awayId: string, homeGoals: string, awayGoals: string) {
+    const homeTeam = await teamsModel.findByPk(Number(homeId));
+    const awayTeam = await teamsModel.findByPk(Number(awayId));
+
+    if (!homeTeam || !awayTeam) {
+      return { status: 404, data: { message: 'There is no team with such id!' } };
+    }
+
     await matchesModel.create({ homeTeamId: Number(homeId),
       awayTeamId: Number(awayId),
       homeTeamGoals: Number(homeGoals),
@@ -44,14 +51,12 @@ export default class MatchesService {
       inProgress: true,
     });
 
-    const returnMatch = await matchesModel.findOne(
-      { where: { homeTeamId: Number(homeId),
-        awayTeamId: Number(awayId),
-        homeTeamGoals: Number(homeGoals),
-        awayTeamGoals: Number(awayGoals),
-        inProgress: true,
-      } },
-    );
+    const returnMatch = await matchesModel.findOne({ where: { homeTeamId: Number(homeId),
+      awayTeamId: Number(awayId),
+      homeTeamGoals: Number(homeGoals),
+      awayTeamGoals: Number(awayGoals),
+      inProgress: true,
+    } });
 
     return { status: 201, data: returnMatch };
   }
