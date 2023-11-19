@@ -32,4 +32,11 @@ export default class MatchesService {
     console.log(debug);
     await matchesModel.update({ inProgress: false }, { where: { id: Number(matchId) } });
   }
+
+  static async updatedMatch(matchId: string, homeTeamGoals: string, awayTeamGoals: string) {
+    await matchesModel.update(
+      { homeTeamGoals: Number(homeTeamGoals), awayTeamGoals: Number(awayTeamGoals) },
+      { where: { id: Number(matchId) } },
+    );
+  }
 }
