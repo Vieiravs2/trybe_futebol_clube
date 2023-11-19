@@ -3,6 +3,6 @@ import MatchesController from '../controllers/matches.controller';
 
 const router = Router();
 
-router.get('/matches', MatchesController.getAllMatches);
+router.get('/matches', MatchesController.getMatches);
 
 export default router;
