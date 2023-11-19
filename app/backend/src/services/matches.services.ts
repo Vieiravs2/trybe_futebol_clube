@@ -37,8 +37,7 @@ export default class MatchesService {
   }
 
   static async createMatch(homeId: string, awayId: string, homeGoals: string, awayGoals: string) {
-    await matchesModel.create({
-      homeTeamId: Number(homeId),
+    await matchesModel.create({ homeTeamId: Number(homeId),
       awayTeamId: Number(awayId),
       homeTeamGoals: Number(homeGoals),
       awayTeamGoals: Number(awayGoals),
@@ -46,8 +45,7 @@ export default class MatchesService {
     });
 
     const returnMatch = await matchesModel.findOne(
-      { where: {
-        homeTeamId: Number(homeId),
+      { where: { homeTeamId: Number(homeId),
         awayTeamId: Number(awayId),
         homeTeamGoals: Number(homeGoals),
         awayTeamGoals: Number(awayGoals),

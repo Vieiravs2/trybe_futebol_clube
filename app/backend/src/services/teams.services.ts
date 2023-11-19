@@ -8,6 +8,6 @@ export default class TeamService {
 
   static async findTeamById(id: number) {
     const team = await teamModel.findByPk(id);
-    return team;
+    return team || false;
   }
 }

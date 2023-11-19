@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import validator from 'validator';
 import JWT from '../utils/JWT';
+import teamService from '../services/teams.services';
 
 export default class Validations {
   static validateLogin(req: Request, res: Response, next: NextFunction) {
@@ -42,6 +43,27 @@ export default class Validations {
       req.body.user = decoded;
     } catch (error) {
       return res.status(401).json({ message: 'Token must be a valid token' });
+    }
+
+    next();
+  }
+
+  static validateTeamsInCreateMatch(req: Request, res: Response, next: NextFunction) {
+    const { homeTeamId, awayTeamId } = req.body;
+    return homeTeamId === awayTeamId ? res.status(422).json(
+      { message: 'It is not possible to create a match with two equal teams' },
+    )
+      : next();
+  }
+
+  static validateTeamExistsInDb(req: Request, res: Response, next: NextFunction) {
+    const { homeTeamId, awayTeamId } = req.body;
+
+    const homeTeam = teamService.findTeamById(homeTeamId);
+    const awayTeam = teamService.findTeamById(awayTeamId);
+
+    if (!homeTeam || !awayTeam) {
+      return res.status(404).json({ message: 'There is no team with such id!' });
     }
 
     next();
