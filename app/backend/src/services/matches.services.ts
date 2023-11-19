@@ -26,10 +26,6 @@ export default class MatchesService {
   }
 
   static async finishMatch(matchId: string) {
-    const debug = await matchesModel.findAll(
-      { where: { id: Number(matchId) } },
-    );
-    console.log(debug);
     await matchesModel.update({ inProgress: false }, { where: { id: Number(matchId) } });
   }
 
@@ -38,5 +34,27 @@ export default class MatchesService {
       { homeTeamGoals: Number(homeTeamGoals), awayTeamGoals: Number(awayTeamGoals) },
       { where: { id: Number(matchId) } },
     );
+  }
+
+  static async createMatch(homeId: string, awayId: string, homeGoals: string, awayGoals: string) {
+    await matchesModel.create({
+      homeTeamId: Number(homeId),
+      awayTeamId: Number(awayId),
+      homeTeamGoals: Number(homeGoals),
+      awayTeamGoals: Number(awayGoals),
+      inProgress: true,
+    });
+
+    const returnMatch = await matchesModel.findOne(
+      { where: {
+        homeTeamId: Number(homeId),
+        awayTeamId: Number(awayId),
+        homeTeamGoals: Number(homeGoals),
+        awayTeamGoals: Number(awayGoals),
+        inProgress: true,
+      } },
+    );
+
+    return { status: 201, data: returnMatch };
   }
 }

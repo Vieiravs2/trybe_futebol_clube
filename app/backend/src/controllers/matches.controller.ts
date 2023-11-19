@@ -20,4 +20,12 @@ export default class MatchesController {
     await MatchesService.updatedMatch(matchId, homeTeamGoals, awayTeamGoals);
     return res.status(200).json({ message: 'Updated' });
   }
+
+  static async createMatch(req: Request, res: Response) {
+    const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = req.body;
+    const result = await MatchesService
+      .createMatch(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
+    const { status, data } = result;
+    return res.status(status).json(data);
+  }
 }
