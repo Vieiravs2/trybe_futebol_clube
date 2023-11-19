@@ -24,4 +24,12 @@ export default class MatchesService {
 
     return { status: 200, data: allMatches };
   }
+
+  static async finishMatch(matchId: string) {
+    const debug = await matchesModel.findAll(
+      { where: { id: Number(matchId) } },
+    );
+    console.log(debug);
+    await matchesModel.update({ inProgress: false }, { where: { id: Number(matchId) } });
+  }
 }

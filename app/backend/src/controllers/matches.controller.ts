@@ -7,4 +7,10 @@ export default class MatchesController {
     const { status, data } = allMatches;
     return res.status(status).json(data);
   }
+
+  static async finishMatch(req: Request, res: Response) {
+    const { matchId } = req.params;
+    await MatchesService.finishMatch(matchId);
+    return res.status(200).json({ message: 'Finished' });
+  }
 }
