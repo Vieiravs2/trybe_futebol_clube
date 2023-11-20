@@ -64,13 +64,13 @@ export default class Calculations {
     this._goalsOwn += match.awayTeamGoals;
 
     if (match.homeTeamGoals === match.awayTeamGoals) {
-      this._totalDraws += 1
+      this._totalDraws += 1;
       this._totalPoints += 1;
     } else if (match.homeTeamGoals > match.awayTeamGoals) {
-      this._totalVictories += 1
+      this._totalVictories += 1;
       this._totalPoints += 3;
     } else {
-      this._totalLosses += 1
+      this._totalLosses += 1;
       this._totalPoints += 0;
     }
   }
