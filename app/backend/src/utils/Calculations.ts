@@ -7,6 +7,8 @@ export type Points = {
   totalLosses: number;
   goalsFavor: number;
   goalsOwn: number;
+  goalsBalance: number;
+  efficiency: number;
 }
 
 export type TypeMatch = {
@@ -52,6 +54,8 @@ export default class Calculations {
       totalLosses: this._totalLosses,
       goalsFavor: this._goalsFavor,
       goalsOwn: this._goalsOwn,
+      goalsBalance: this._goalsFavor - this._goalsOwn,
+      efficiency: Number(((this._totalPoints / (this._totalGames * 3)) * 100).toFixed(2)),
     }
   }
 
