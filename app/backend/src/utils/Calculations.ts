@@ -9,7 +9,7 @@ export type Points = {
   goalsOwn: number;
   goalsBalance: number;
   efficiency: number;
-}
+};
 
 export type TypeMatch = {
   id: number,
@@ -22,25 +22,24 @@ export type TypeMatch = {
   awayTeam: {
     teamName: string;
   };
-}
+};
 
 export default class Calculations {
-  private _totalPoints: number = 0;
-  private _totalGames: number = 0;
-  private _totalVictories: number = 0;
-  private _totalDraws: number = 0;
-  private _totalLosses: number = 0;
-  private _goalsFavor: number = 0;
-  private _goalsOwn: number = 0;
+  private _totalPoints = 0;
+  private _totalGames = 0;
+  private _totalVictories = 0;
+  private _totalDraws = 0;
+  private _totalLosses = 0;
+  private _goalsFavor = 0;
+  private _goalsOwn = 0;
 
   constructor(
     private teamName: string,
-    private matches: TypeMatch[]
+    private matches: TypeMatch[],
   ) {}
 
   totalGamesAndReturn(): Points {
-    this.matches.filter((match) => match.homeTeam.teamName === this.teamName)
-    .forEach((element) => { 
+    this.matches.filter((match) => match.homeTeam.teamName === this.teamName).forEach((element) => { 
       this._totalGames += 1 
       this.calculatePoints(element)
     })

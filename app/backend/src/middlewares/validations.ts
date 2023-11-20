@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import validator from 'validator';
 import JWT from '../utils/JWT';
-import teamService from '../services/teams.services';
 
 export default class Validations {
   static validateLogin(req: Request, res: Response, next: NextFunction) {
