@@ -55,7 +55,7 @@ export default class Calculations {
       goalsFavor: this._goalsFavor,
       goalsOwn: this._goalsOwn,
       goalsBalance: this._goalsFavor - this._goalsOwn,
-      efficiency: (this._totalPoints / (this._totalGames * 3) * 100).toFixed(2),
+      efficiency: ((this._totalPoints / (this._totalGames * 3)) * 100).toFixed(2),
     };
   }
 
