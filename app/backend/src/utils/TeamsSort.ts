@@ -10,6 +10,10 @@ const TeamsSort = (arr: Points[]) => (
       return b.totalVictories - a.totalVictories;
     }
 
+    if (a.goalsBalance !== b.goalsBalance) {
+      return b.goalsBalance - a.goalsBalance;
+    }
+
     return b.goalsFavor - a.goalsFavor;
   })
 );
