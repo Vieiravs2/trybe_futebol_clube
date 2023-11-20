@@ -21,6 +21,6 @@ export default class LeaderboardService {
     });
 
     const sort = TeamsSort(allTeamsMap);
-    return { status: 200, data: sort};
+    return { status: 200, data: sort };
   }
 }

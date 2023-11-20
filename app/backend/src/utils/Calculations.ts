@@ -39,7 +39,8 @@ export default class Calculations {
   ) {}
 
   totalGamesAndReturn(): Points {
-    this.matches.filter((match) => match.homeTeam.teamName === this.teamName).forEach((element) => { 
+    this.matches.filter((match) => match.homeTeam.teamName === this.teamName)
+    .forEach((element) => { 
       this._totalGames += 1 
       this.calculatePoints(element)
     })
