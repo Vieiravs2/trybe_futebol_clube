@@ -11,7 +11,6 @@ router.post(
   '/matches',
   Validations.validateToken,
   Validations.validateTeamsInCreateMatch,
-  Validations.validateTeamExistsInDb,
   MatchesController.createMatch,
 );
 

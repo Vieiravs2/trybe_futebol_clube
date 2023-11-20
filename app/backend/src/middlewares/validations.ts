@@ -55,17 +55,4 @@ export default class Validations {
     )
       : next();
   }
-
-  static validateTeamExistsInDb(req: Request, res: Response, next: NextFunction) {
-    const { homeTeamId, awayTeamId } = req.body;
-
-    const homeTeam = teamService.findTeamById(homeTeamId);
-    const awayTeam = teamService.findTeamById(awayTeamId);
-
-    if (!homeTeam || !awayTeam) {
-      return res.status(404).json({ message: 'There is no team with such id!' });
-    }
-
-    next();
-  }
 }
