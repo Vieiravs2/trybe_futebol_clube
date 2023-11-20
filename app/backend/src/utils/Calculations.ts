@@ -40,10 +40,10 @@ export default class Calculations {
 
   totalGamesAndReturn(): Points {
     this.matches.filter((match) => match.homeTeam.teamName === this.teamName)
-    .forEach((element) => { 
-      this._totalGames += 1 
-      this.calculatePoints(element)
-    })
+      .forEach((element) => {
+        this._totalGames += 1;
+        this.calculatePoints(element);
+      });
 
     return {
       name: this.teamName,
@@ -56,12 +56,10 @@ export default class Calculations {
       goalsOwn: this._goalsOwn,
       goalsBalance: this._goalsFavor - this._goalsOwn,
       efficiency: Number(((this._totalPoints / (this._totalGames * 3)) * 100).toFixed(2)),
-    }
+    };
   }
 
   private calculatePoints(match: TypeMatch) {
-    const isHomeTeam = match.homeTeam.teamName === this.teamName;
-    
     this._goalsFavor += match.homeTeamGoals;
     this._goalsOwn += match.awayTeamGoals;
 
