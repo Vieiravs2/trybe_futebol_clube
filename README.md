@@ -1,4 +1,4 @@
-div align='center'>
+<div align='center'>
   <img width="180px" alt="controle-estoque" src="https://cdn-icons-png.flaticon.com/512/4297/4297965.png" />
   <h1>Trybe Futebol Clube</h1>
   <p>
