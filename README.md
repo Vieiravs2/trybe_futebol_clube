@@ -32,7 +32,7 @@ Para testar este projeto, precisará das seguintes ferramentas instaladas:
 
 ```bash
 # Clone ou baixe o repositório
-git clone https://github.com/LucasCavalheri/trybe-futebol-clube.git
+git clone https://github.com/Vieiravs2/trybe_futebol_clube.git
 # Entre no diretório
 cd trybe-futebol-clube
 # Instale as dependências
